@@ -8,6 +8,7 @@ from flask_bcrypt import Bcrypt
 
 bcrypt = Bcrypt()
 
+
 from flask_principal import Identity, AnonymousIdentity, \
      identity_changed
 
