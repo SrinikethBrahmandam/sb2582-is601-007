@@ -1,3 +1,4 @@
+# from https://towardsdatascience.com/deploy-to-google-cloud-run-using-github-actions-590ecf957af0
 import os
 import sys
 from flask import Flask, session, render_template
@@ -14,7 +15,7 @@ sys.path.append(CURR_DIR)
 
 # custom error pages
 def page_not_found(e):
-  return render_template('404.html'), 404
+    return render_template('404.html'), 404
 
 def permission_denied(e):
     return render_template("403.html"), 403
@@ -32,13 +33,10 @@ def create_app(config_filename=''):
     with app.app_context():
         from views.hello import hello
         app.register_blueprint(hello)
-        from views.sample import sample
-        app.register_blueprint(sample)
         from auth.auth import auth
         app.register_blueprint(auth)
         from roles.roles import roles
         app.register_blueprint(roles)
-
         # load the extension
         principals = Principal(app) # must be defined/initialized for identity to work (flask_principal)
         @login_manager.user_loader

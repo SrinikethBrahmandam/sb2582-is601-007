@@ -170,4 +170,8 @@
 <tr><td> <em>Sub-Task 2: </em> Prod Application Link to Login Page</td></tr>
 <tr><td> <a rel="noreferrer noopener" target="_blank" href="https://is601-sb2582-prod-6b6e53619b9b.herokuapp.com/login">https://is601-sb2582-prod-6b6e53619b9b.herokuapp.com/login</a> </td></tr>
 </table></td></tr>
+<<<<<<< HEAD
 <table><tr><td><em>Grading Link: </em><a rel="noreferrer noopener" href="https://learn.ethereallab.app/homework/IS601-007-F23/is601-milestone1-deliverable/grade/sb2582" target="_blank">Grading</a></td></tr></table>
+=======
+<table><tr><td><em>Grading Link: </em><a rel="noreferrer noopener" href="https://learn.ethereallab.app/homework/IS601-007-F23/is601-milestone1-deliverable/grade/sb2582" target="_blank">Grading</a></td></tr></table>
+>>>>>>> 5f51622e2190c2dc29919296c18ec62a3472cbbf
