@@ -9,7 +9,7 @@ def search():
     rows = []
     # DO NOT DELETE PROVIDED COMMENTS
     # TODO search-1 retrieve id, name, address, city, country, state, zip, website, donation count as donations for the organization
-    # bj26 11/28/23
+    # sb2582 - 12/14/23
     # don't do SELECT * and replace the below "..." portion
     allowed_columns = ["name", "city", "country", "state", "modified", "created"]
     
@@ -24,7 +24,7 @@ def search():
 
     
     # TODO search-2 get name, country,S state, column, order, limit request args
-    # bj26 11/28/23
+    # sb2582 - 12/14/23
     name = request.args.get("name")
     country = request.args.get("country")
     state = request.args.get("state")
@@ -37,30 +37,30 @@ def search():
     print(state)
 
     # TODO search-3 append a LIKE filter for name if provided
-    # bj26 11/28/23
+    # sb2582 - 12/14/23
     if name:
         query += " AND name LIKE %(name)s"
         args["name"] = f"%{name}%"
     
     # TODO search-4 append an equality filter for country if provided
-    # bj26 11/28/23
+    # sb2582 - 12/14/23
     if country:
         query += " AND country = %(country)s"
         args["country"] = country
     
     # TODO search-5 append an equality filter for state if provided
-    # bj26 11/28/23
+    # sb2582 - 12/14/23
     if state:
         query += " AND state = %(state)s"
         args["state"] = state
     
     # TODO search-6 append sorting if column and order are provided and within the allows columns and allowed order asc,desc
-    # bj26 11/28/23
+    # sb2582 - 12/14/23
     if column and order and column in allowed_columns and order in ["asc", "desc"]:
         query += f" ORDER BY {column} {order}"
     
     # TODO search-7 append limit (default 10) or limit greater than or equal to 1 and less than or equal to 100
-    # bj26 11/28/23
+    # sb2582 - 12/14/23
     if limit:
         try:
             limit = int(limit)
@@ -78,7 +78,7 @@ def search():
             rows = result.rows
     except Exception as e:
         # TODO search-9 make message user friendly
-        # bj26 11/28/23
+        # sb2582 - 12/14/23
         print(f"{e}")
         flash("Error retrieving organizations", "danger")
     allowed_columns = [(c, c.replace("_", " ").title()) for c in allowed_columns]
@@ -92,7 +92,7 @@ def add():
         has_error = False 
         
         # TODO add-1 retrieve form data for name, address, city, state, country, zip, website, description
-        # bj26 11/28/23
+        # sb2582 - 12/14/23
         name = request.form.get("name")
         address = request.form.get("address")
         city = request.form.get("city")
@@ -103,31 +103,31 @@ def add():
         description = request.form.get("description")
         
         # TODO add-2 name is required (flash proper error message)
-        # bj26 11/28/23
+        # sb2582 - 12/14/23
         if not name:
             flash("Name is required", "danger")
             has_error = True
         
         # TODO add-3 address is required (flash proper error message)
-        # bj26 11/28/23
+        # sb2582 - 12/14/23
         if not address:
             flash("Address is required", "danger")
             has_error = True
 
         # TODO add-4 city is required (flash proper error message)
-        # bj26 11/28/23
+        # sb2582 - 12/14/23
         if not city:
             flash("City is required", "danger")
             has_error = True
         
         # TODO add-5 state is required (flash proper error message)
-        # bj26 11/28/23
+        # sb2582 - 12/14/23
         if not state:
             flash("State is required", "danger")
             has_error = True
         
         # TODO add-5a state should be a valid state mentioned in pycountry for the selected state
-        # bj26 11/28/23
+        # sb2582 - 12/14/23
         if country.strip():
             states = pycountry.subdivisions.get(country_code=country.strip())
         if not states:
@@ -138,13 +138,13 @@ def add():
             has_error = True
     
         # TODO add-6 country is required (flash proper error message)
-        # bj26 11/28/23
+        # sb2582 - 12/14/23
         if not country:
             flash("Country is required", "danger")
             has_error = True
         
         # TODO add-6a country should be a valid country mentioned in pycountry from country = country code
-        # bj26 11/28/23
+        # sb2582 - 12/14/23
         valid_countries = [country.alpha_2 for country in list(pycountry.countries)]
         if country not in valid_countries:
             flash("Invalid Country", "danger")
@@ -153,7 +153,7 @@ def add():
             flash("Website is absent", "warning")
         
         # TODO add-8 zip is required (flash proper error message)
-        # bj26 11/28/23
+        # sb2582 - 12/14/23
         if not zip_code:
             flash("Zip is required", "danger")
             has_error = True
@@ -161,7 +161,7 @@ def add():
             flash("Description is absent", "warning")
         
         # TODO add-10 add query and add arguments
-        # bj26 11/28/23
+        # sb2582 - 12/14/23
         if not has_error:
             try:
                 result = DB.insertOne("""
@@ -173,7 +173,7 @@ def add():
                     flash("Added Organization", "success")
             except Exception as e:
                 # TODO add-11 make message user friendly
-                # bj26 11/28/23
+                # sb2582 - 12/14/23
                 print(f"{e}")
                 flash("Error adding organization", "danger")
         
@@ -182,7 +182,7 @@ def add():
 @organization.route("/edit", methods=["GET", "POST"])
 def edit():
     # TODO edit-1 request args id is required (flash proper error message)
-    # bj26 11/28/23
+    # sb2582 - 12/14/23
     id = request.args.get("id")
     if not id:
         flash("ID is required for editing", "danger")
@@ -190,7 +190,7 @@ def edit():
     else:
         if request.method == "POST":
             # TODO edit-2 retrieve form data for name, address, city, state, country, zip, website
-            # bj26 11/28/23
+            # sb2582 - 12/14/23
             name = request.form.get("name")
             address = request.form.get("address")
             city = request.form.get("city")
@@ -201,31 +201,31 @@ def edit():
             description = request.form.get("description")
             
             # TODO edit-3 name is required (flash proper error message)
-            # bj26 11/28/23
+            # sb2582 - 12/14/23
             if not name:
                 flash("Name is required", "danger")
                 has_error = True
 
             # TODO edit-4 address is required (flash proper error message)
-            # bj26 11/28/23
+            # sb2582 - 12/14/23
             if not address:
                 flash("Address is required", "danger")
                 has_error = True
             
             # TODO edit-5 city is required (flash proper error message)
-            # bj26 11/28/23
+            # sb2582 - 12/14/23
             if not city:
                 flash("City is required", "danger")
                 has_error = True
 
             # TODO edit-6 state is required (flash proper error message)
-            # bj26 11/28/23
+            # sb2582 - 12/14/23
             if not state:
                 flash("State is required", "danger")
                 has_error = True
             
             # TODO edit-6a state should be a valid state mentioned in pycountry for the selected state
-            # bj26 11/28/23
+            # sb2582 - 12/14/23
             if country.strip():
                 states = pycountry.subdivisions.get(country_code=country.strip())
             if not states:
@@ -236,25 +236,25 @@ def edit():
                 has_error = True
             
             # TODO edit-7 country is required (flash proper error message)
-            # bj26 11/28/23
+            # sb2582 - 12/14/23
             if not country:
                 flash("Country is required", "danger")
                 has_error = True
             
             # TODO edit-7a country should be a valid country mentioned in pycountry
-            # bj26 11/28/23
+            # sb2582 - 12/14/23
             valid_countries = [country.alpha_2 for country in list(pycountry.countries)]
             if country not in valid_countries:
                 flash("Invalid country", "danger")
                 has_error = True
             
             # TODO edit-8 website is not required
-            # bj26 11/28/23
+            # sb2582 - 12/14/23
             if not website:
                 flash("Website is absent", "warning")
             
             # TODO edit-9 zipcode is required (flash proper error message)
-            # bj26 11/28/23
+            # sb2582 - 12/14/23
             if not zip_code:
                 flash("Zipcode is required", "danger")
                 has_error = True
@@ -262,7 +262,7 @@ def edit():
             has_error = False
 
             # TODO edit-10 fill in proper update query
-            # bj26 11/28/23
+            # sb2582 - 12/14/23
             if not has_error:
                 print("Updating organization")
                 try:
@@ -281,13 +281,13 @@ def edit():
         row = {}
         try:
             # TODO edit-12 fetch the updated data
-            # bj26 11/28/23
+            # sb2582 - 12/14/23
             result = DB.selectOne("SELECT * FROM IS601_MP3_Organizations WHERE id = %s", id)
             if result.status:
                 row = result.row
         except Exception as e:
             # TODO edit-13 make this user-friendly
-            # bj26 11/28/23
+            # sb2582 - 12/14/23
             print(f"{e}")
             flash("Error fetching record", "danger")
     
@@ -296,7 +296,7 @@ def edit():
 @organization.route("/delete", methods=["GET"])
 def delete():
     # TODO delete-1 if id is missing, flash necessary message and redirect to search
-    # bj26 11/28/23
+    # sb2582 - 12/14/23
     organization_id = request.args.get("id")
     if not organization_id:
         flash("Organization ID is required for deletion", "danger")
@@ -304,14 +304,14 @@ def delete():
 
     try:
         # TODO delete-2 delete organization by id (fetch the id from the request)
-        # bj26 11/28/23
+        # sb2582 - 12/14/23
         
         intermediate_result = DB.delete("DELETE FROM IS601_MP3_Donations WHERE organization_id = %s", organization_id)
         if intermediate_result.status:
             result = DB.delete("DELETE FROM IS601_MP3_Organizations WHERE id = %s", organization_id)
 
         # TODO delete-3 ensure a flash message shows for successful delete
-        # bj26 11/28/23
+        # sb2582 - 12/14/23
         if result.status:
             flash("Deleted organization", "success")
 
@@ -320,10 +320,10 @@ def delete():
         flash("Error deleting organization", "danger")
 
     # TODO delete-4 pass all argument except id to this route
-    # bj26 11/28/23
+    # sb2582 - 12/14/23
     args = request.args.copy()
     args.pop("id", None)
 
     # TODO delete-5 redirect to organization search
-    # bj26 11/28/23
+    # sb2582 - 12/14/23
     return redirect(url_for("organization.search", **args))

@@ -9,43 +9,43 @@
     <form method="GET">
         <div class="row">
             <!--first name-->
-            <!-- bj26 11/28/23 -->
+            <!-- sb2582 12/14/23 -->
             <div class="col">
                 <input id="fn" class="form-control" placeholder="First Name" name="fn" type="text"
                     value="{{request.args.get('fn') or ''}}">
             </div>
             <!--last name-->
-            <!-- bj26 11/28/23 -->
+            <!-- sb2582 12/14/23 -->
             <div class="col">
                 <input id="ln" class="form-control" placeholder="Last Name" name="ln" type="text"
                     value="{{request.args.get('ln') or ''}}">
             </div>
             <!--email-->
-            <!-- bj26 11/28/23 -->
+            <!-- sb2582 12/14/23 -->
             <div class="col">
                 <input id="email" class="form-control" placeholder="Email" name="email" type="text"
                     value="{{request.args.get('email') or ''}}">
             </div>
             <!-- item name-->
-            <!-- bj26 11/28/23 -->
+            <!-- sb2582 12/14/23 -->
             <div class="col">
                 <input id="item_name" class="form-control" placeholder="Item Name" name="item_name" type="text"
                     value="{{request.args.get('item_name') or ''}}">
             </div>
             <!--organization-->
-            <!-- bj26 11/28/23 -->
+            <!-- sb2582 12/14/23 -->
             <div class="col">
                 <label class="visually-hidden"
                     for="organization">Organization</label>
                 {{organization_dropdown(request.args.get("organization"))}}
             </div>
             <!-- sort filter -->
-            <!-- bj26 11/28/23 -->
+            <!-- sb2582 12/14/23 -->
             <div class="col">
                 <input id="limit" class="form-control" placeholder="limit" name="limit" type="int" value="{{request.args.get('limit') or 10}}">
             </div>
             <!--limit filter-->
-            <!-- bj26 11/28/23 -->
+            <!-- sb2582 12/14/23 -->
             {# TODO pass/set the columns that can be used for sort/filter (i.e. allowed_columns) #}
             <div class="col">
                 {{sort_filter(allowed_columns)}}
@@ -75,7 +75,7 @@
                 <th>Comments</th>
                 <th>Organization Name</th>
                 <!-- keep this -->
-                <!-- bj26 11/28/23 -->
+                <!-- sb2582 12/14/23 -->
                 <th>Actions</th>
             </tr>
         </thead>
@@ -89,7 +89,7 @@
             a delete button that passes the donation id and the request args to the donation delete route
             #}
             <!-- iterate over rows and generate proper tr and td elements with the data -->
-            <!-- bj26 11/28/23 -->
+            <!-- sb2582 12/14/23 -->
             <tr>
                 <td>{{ row.donor_firstname }}</td>
                 <td>{{ row.donor_lastname}}</td>
