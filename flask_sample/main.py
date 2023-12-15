@@ -21,6 +21,10 @@ def permission_denied(e):
     return render_template("403.html"), 403
 
 
+
+
+
+
 login_manager = flask_login.LoginManager()
 # app = Flask(__name__)
 def create_app(config_filename=''):
