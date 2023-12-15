@@ -10,6 +10,7 @@ class CRUD(Enum):
     ALTER = 5
 
 
+
 class DBResponse:
     def __init__(self, status, row = None, rows = None):
         self.status = status
