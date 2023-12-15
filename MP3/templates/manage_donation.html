@@ -20,7 +20,7 @@
             if a validation error occurs, the inserted form data should persist
             #}
             <!-- Donor First Name -->
-            <!-- sb2582 12/14/23 -->
+            <!-- sb2592 12/14/23 -->
             <div class="mb-3">
                 <label for="donor_firstname" class="form-label">Donor First Name</label>
                 <input type="text" class="form-control" id="donor_firstname" name="donor_firstname"
@@ -28,14 +28,14 @@
             </div>
             
             <!-- Donor Last Name -->
-            <!-- sb2582 12/14/23 -->
+            <!-- sb2592 12/14/23 -->
             <div class="mb-3">
                 <label for="donor_lastname" class="form-label">Donor Last Name</label>
                 <input type="text" class="form-control" id="donor_lastname" name="donor_lastname"
                     value="{{ donation.get('donor_lastname') or '' }}" required>
             </div>
             <!-- Donor Email -->
-            <!-- sb2582 12/14/23 -->
+            <!-- sb2592 12/14/23 -->
             <div class="mb-3">
                 <label for="donor_email" class="form-label">Donor Email</label>
                 <input type="email" class="form-control" id="donor_email" name="donor_email"
@@ -43,7 +43,7 @@
             </div>
 
             <!-- Item Name -->
-            <!-- sb2582 12/14/23 -->
+            <!-- sb2592 12/14/23 -->
             <div class="mb-3">
                 <label for="item_name" class="form-label">Item Name</label>
                 <input type="text" class="form-control" id="item_name" name="item_name"
@@ -51,7 +51,7 @@
             </div>
 
             <!-- Item Description -->
-            <!-- sb2582 12/14/23 -->
+            <!-- sb2592 12/14/23 -->
             <div class="mb-3">
                 <label for="item_description" class="form-label">Item Description</label>
                 <textarea class="form-control" id="item_description" name="item_description"
@@ -59,7 +59,7 @@
             </div>
 
             <!-- Item Quantity -->
-            <!-- sb2582 12/14/23 -->
+            <!-- sb2592 12/14/23 -->
             <div class="mb-3">
                 <label for="item_quantity" class="form-label">Item Quantity</label>
                 <input type="number" class="form-control" id="item_quantity" name="item_quantity"
@@ -67,7 +67,7 @@
             </div>
 
             <!-- Donation Date -->
-            <!-- sb2582 12/14/23 -->
+            <!-- sb2592 12/14/23 -->
             <div class="mb-3">
                 <label for="donation_date" class="form-label">Donation Date (mm/dd/yyyy)</label>
                 <input type="date" class="form-control" id="donation_date" name="donation_date"
@@ -75,7 +75,7 @@
             </div>
 
             <!-- Comments -->
-            <!-- sb2582 12/14/23 -->
+            <!-- sb2592 12/14/23 -->
             <div class="mb-3">
                 <label for="comments" class="form-label">Comments</label>
                 <textarea class="form-control" id="comments" name="comments"
@@ -83,7 +83,7 @@
             </div>
 
             <!-- Organization Selection -->
-            <!-- sb2582 12/14/23 -->
+            <!-- sb2592 12/14/23 -->
             {# use the below for organization selection #}
             {{ organization_dropdown(val=donation.get("organization_id")) }}
 
